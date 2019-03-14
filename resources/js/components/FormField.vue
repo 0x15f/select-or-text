@@ -7,7 +7,7 @@
                 class="w-full form-control form-select"
                 :class="errorClasses"
                 @change="
-                    if($event.target.value === 'CUSTOM') { 
+                    if($event.target.value === 'CUSTOM' && $event.target.value !== '') { 
                         customOption = true;
                         handleChange(''); 
                     } 

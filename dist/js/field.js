@@ -10757,7 +10757,10 @@ var render = function() {
                     : $$selectedVal[0]
                 },
                 function($event) {
-                  if ($event.target.value === "CUSTOM") {
+                  if (
+                    $event.target.value === "CUSTOM" &&
+                    $event.target.value !== ""
+                  ) {
                     _vm.customOption = true
                     _vm.handleChange("")
                   } else {
