@@ -26,7 +26,7 @@
                     {{ option.label }}
                 </option>
 
-                <option value="CUSTOM">__('Custom (Free Text)')</option>
+                <option value="CUSTOM">{{__('Custom (Free Text)')}}</option>
             </select>
 
             <input v-show="customOption" type="text"
