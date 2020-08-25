@@ -21,4 +21,17 @@ The field has an `options` method similar to that of Laravel Nova's `Select` fie
 
 ## Screenshots:
 
-//todo: add screenshots
+Add the field to nova:
+![Code](resources/img/code.png)
+
+The select field.
+![The select field](resources/img/screenshot-1.png)
+
+Select one of your provided options, or choose "Custom (Free Text)" to add a custom value.
+![Options](resources/img/screenshot-2.png)
+
+The field when a provided option is selected:
+![Select box](resources/img/screenshot-3.png)
+
+The field when a custom value can be entered (a simple text field):
+![Text input](resources/img/screenshot-4.png)
