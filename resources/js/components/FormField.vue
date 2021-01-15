@@ -1,7 +1,7 @@
 <template>
     <default-field :field="field" :errors="errors">
         <template slot="field">
-            <select 
+            <select
                 v-model="selectValue"
                 class="w-full form-control form-select"
                 :class="errorClasses"
@@ -38,13 +38,22 @@ export default {
     props: ['resourceName', 'resourceId', 'field'],
 
     data() {
+        const isSelectableOption = this.isSelectableOption(this.field.value)
+        const defaultSelectValue = !!this.field.value ? 'CUSTOM' : ''
         return {
-            selectValue: '',
-            textValue: '',
-        };
+            selectValue: isSelectableOption ? this.field.value : defaultSelectValue,
+            textValue: !isSelectableOption ? this.field.value : '',
+        }
     },
 
     methods: {
+        /**
+         * Check if `value` is selectable in `options` or custom value
+         */
+        isSelectableOption(value) {
+            return this.field.options.map(option => option.value).includes(value)
+        },
+
         /**
          * Fill the given FormData object with the field's internal value.
          */
@@ -56,6 +65,7 @@ export default {
     computed: {
         isCustom() {
             return this.selectValue == 'CUSTOM'
+                && !this.isSelectableOption(this.selectValue)
         },
 
         computedValue() {
