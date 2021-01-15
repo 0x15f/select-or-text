@@ -38,9 +38,10 @@ export default {
     props: ['resourceName', 'resourceId', 'field'],
 
     data() {
-        var isSelectableOption = this.isSelectableOption(this.field.value)
+        const isSelectableOption = this.isSelectableOption(this.field.value)
+        const defaultSelectValue = !!this.field.value ? 'CUSTOM' : ''
         return {
-            selectValue: isSelectableOption ? this.field.value : 'CUSTOM',
+            selectValue: isSelectableOption ? this.field.value : defaultSelectValue,
             textValue: !isSelectableOption ? this.field.value : '',
         }
     },
@@ -63,7 +64,8 @@ export default {
 
     computed: {
         isCustom() {
-            return !this.isSelectableOption(this.selectValue)
+            return this.selectValue == 'CUSTOM'
+                && !this.isSelectableOption(this.selectValue)
         },
 
         computedValue() {
