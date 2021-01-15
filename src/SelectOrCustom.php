@@ -2,9 +2,9 @@
 
 namespace Lynndigital\SelectOrCustom;
 
-use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Fields\Select;
 
-class SelectOrCustom extends Field
+class SelectOrCustom extends Select
 {
     /**
      * The field's component.
@@ -12,13 +12,4 @@ class SelectOrCustom extends Field
      * @var string
      */
     public $component = 'select-or-custom';
-
-    public function options(array $options)
-    {
-        return $this->withMeta([
-            'options' => collect($options ?? [])->map(function ($label, $value) {
-                return ['label' => $label, 'value' => $value];
-            })->values()->all(),
-        ]);
-    }
 }
